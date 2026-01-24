@@ -11,3 +11,4 @@ _multiconfig.yml
 .idea/modules.xml
 .idea/misc.xml
 AGENTS.md
+.serena/project.yml
