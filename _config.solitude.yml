@@ -20,8 +20,8 @@
 site:
   name:
     class: text # text / i_class / img
-    custom: Solitude # Solitude / fas fa-ghost / /img/pwa/favicon.ico
-  icon: /img/pwa/favicon.png # Site icon / 网站图标
+    custom: ZHOU JIE # Solitude / fas fa-ghost / /img/pwa/favicon.ico
+  icon: https://i.postimg.cc/SRtgTJX9/head.jpg # Site icon / 网站图标
 # --------------------------- end ---------------------------
 
 # --------------------------- start ---------------------------
@@ -37,7 +37,7 @@ nav:
   # Menu
   # 菜单
   menu:
-    首页: / # name: link
+    #首页: / # name: link
     文章: # name
       归档: /archives/ || fas fa-folder-closed # item name: link || icon
       分类: /categories/ || fas fa-clone
@@ -71,10 +71,10 @@ hometop:
   banner:
     title: 热爱生活<br> 不断前行 # 大字
     desc:
-      #      一个热爱生活的人 # 小字
-      # - 我只是一个普通的程序员
-      # - 我有一个不平凡的梦想
+      - 一个热爱生活的人 # 小字
+      - 我有一个不平凡的梦想
       - 我希望能够改变世界
+      # - 我只是一个普通的程序员
     icon:
       HTML: # name
         img: https://i.postimg.cc/vBWVnY8q/html.png # url
@@ -134,11 +134,11 @@ aside:
     author:
       img: https://img.zhoujie.de5.net/img/head.jpg # url
       #      img: https://i.postimg.cc/jSMQS61r/IMG_3542.jpg # url
-      sticker: # url, 24x24 size
+      sticker: https://i.postimg.cc/DZMm1sdY/images.jpg # url, 24x24 size
     # 介绍 / Introduction
     description: <br> 春风不语，既随本心
     # 内容 / Content
-    content: # 这是我的博客 / This is my Blog
+    content: This is my Blog # 这是我的博客 /
     state:
       morning: ✨ 早上好，新的一天开始了
       noon: 🍲 午餐时间
@@ -146,9 +146,12 @@ aside:
       night: 早点休息
       goodnight: 晚安 😴
     witty_words:
-    # - 你可以的
-    # - 你一定可以的
-    # - 祝你好运，陌生人
+         - 你可以的
+         - 你一定可以的
+         - 祝你好运，陌生人
+         - 你是最棒滴
+         - 我看好你哦
+         - 六六六
     # social
     # 社交信息图标
     information:
@@ -265,7 +268,7 @@ post:
   meta:
     # Release date
     # 发布日期
-    date: false
+    date: true
     # Update date
     # 更新日期
     updated: false
@@ -281,24 +284,26 @@ post:
     pv: false
     # Comment count
     # 评论数
-    comment: false
+    comment: true
   # Reward
   # 打赏
   award:
-    enable: false
-    appreciators: /about/ # Reward page
+    enable: true
+    #  appreciators: /about/ # Reward page
     # Reward Title
     # 打赏标题
-    title: # Thanks for your appreciation. / 感谢您的赞赏
-    desc: # Because of your support, I realize the value of writing articles. / 由于您的支持，我才能够实现写作的价值。
+    title: 感谢您的赞赏
+    desc: 由于您的支持，我才能够实现写作的价值。
     # Reward list
     # 打赏列表
     list:
-    # - name: Github Sponsor
-    #   qcode: https://s3.qjqq.cn/47/661ba900c4bc1.webp!color
-    #   url: https://github.com/sponsors/everfu
-    #   color: var(--efu-black)
-
+      - name: 微信
+        qcode: https://img.zhoujie.de5.net/img/weixin.jpg
+        # url: https://img.zhoujie.de5.net/img/weixin.jpg
+        color: var(--efu-black)
+      - name: 支付宝
+        qcode: https://img.zhoujie.de5.net/img/zhifubao.jpg
+        color: var(--efu-black)
   # Share icon
   # 分享图标
   share:
@@ -317,7 +322,7 @@ post:
   # Article reading progress
   # 文章封面取色
   covercolor:
-    enable: false
+    enable: true
     # local: local color / api: api color / ave: oss average color
     mode: local
     # api address / api 地址
@@ -530,11 +535,11 @@ footer:
   # 友情链接
   group:
     # 导航:
-    Archives: /archives/
+#    Archives: /archives/
     Categories: /categories/
     Tags: /tags/
     # 排列:
-    Cookies: /cookies/
+#    Cookies: /cookies/
     Privacy: /privacy/
     Copyright: /copyright/
 
@@ -635,10 +640,10 @@ lazyload:
 loading:
   # Full screen loading
   # 全屏加载
-  fullpage: false
+  fullpage: true
   # Loading icon, default is siteicon
   # 加载图标，不写默认siteicon
-  favicon: /img/favicon.png
+  favicon: https://img.zhoujie.de5.net/img/head.jpg
   # Pace loading
   # Pace 加载
   pace: true
@@ -871,9 +876,9 @@ search:
 # Music Page
 # 音乐馆
 music:
-  enable: false
+  enable: true
   # 歌单 ID / 单曲 ID
-  id: 5144842535
+  id: 7202007377
   # 服务商：netease / qq / xiami / kugou / baidu
   server: netease
   # 类型：playlist / song
@@ -979,7 +984,7 @@ CDN:
     fontawesome: https://registry.npmmirror.com/@fortawesome/fontawesome-free/6.7.2/files/css/all.min.css
     snackbar: https://unpkg.com/node-snackbar@0.1.16/dist/snackbar.min.js
     typeit_js: https://unpkg.com/typeit@8.8.7/dist/index.umd.js
-    
+
   # algolia_search:
   # aplayer_css:
   # aplayer_js:

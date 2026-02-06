@@ -8,7 +8,7 @@ subtitle: ''
 description: ''
 keywords:
 author: Jay
-language: en
+language: zh-CN
 timezone: ''
 
 # URL
@@ -103,5 +103,5 @@ theme: solitude
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: git@github.com:zhou1143352957/zhou1143352957.github.io.git
+  repository: https://github.com/zhou1143352957/zhou1143352957.github.io.git
   branch: main
