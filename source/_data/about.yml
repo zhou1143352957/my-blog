@@ -10,16 +10,18 @@ authorinfo:
     - 现实中高大威猛 🧱
     - 互联网重拳出击 💢
     - 艺术创作发烧友 🎨
-  image: https://img.zhoujie.de5.net/img/HeadPoster.jpg
+  image: https://img.zhoujie.de5.net/img/head.jpg
 
 # 标题
-title: 关于本站
+title: 关于ZhouJie
 
 # 介绍块
 # 这个模块必须写完整，如果不需要可以不写
 contentinfo: # 顶部个人信息展示
+  # 背景样式（可选）：支持纯色或渐变，例如 '#1f2937' 或 'linear-gradient(120deg, #ff7a18 0, #af002d 100%)'
+  bg: "linear-gradient(120deg, #8b6dff 0%, #77e3ff 100%)"
   sup: 倘若生活太苦，我便往里加亿点糖✨
-  name: Seckill | 周杰 # 名称
+  name: Seckill | ZhouJie # 名称
   title: 致力于缩小人与人之间的信息差 # 介绍
   tip: 追求
   slogan: 源于<br>热爱而去 努力
@@ -39,7 +41,10 @@ skills: # 根据需求添加
   tags:
     - title: Java
       color: "#fff"
-      icon: fab fa-java
+      img: https://i.postimg.cc/nLTtpc9z/java-Pic.png
+    - title: CloudFlare
+      color: "#e9572b"
+      icon: fab fa-cloudflare
     - title: Docker
       color: "#57b6e6"
       icon: fab fa-docker
@@ -49,6 +54,9 @@ skills: # 根据需求添加
     - title: Vue
       color: "#b8f0ae"
       icon: fab fa-vuejs
+    - title: Android
+      color: "#fff"
+      img: https://i.postimg.cc/WbW70RR5/android-logo.png
     - title: JS
       color: "#f7cb4f"
       icon: fab fa-js
@@ -58,6 +66,18 @@ skills: # 根据需求添加
     - title: Git
       color: "#df5b40"
       icon: fab fa-git
+    - title: Zeabur
+      color: "#fff"
+      img: https://i.postimg.cc/0QWn8hCd/107748533.png
+    - title: ClawCloud
+      color: "#fff"
+      img: https://i.postimg.cc/3wrbYjHs/apple-icon.png
+    - title: Claude
+      color: "#fff"
+      img: https://i.postimg.cc/4NhDS1J6/Claude-AI-symbol-svg.png
+    - title: Vercel
+      color: "#000"
+      img: https://i.postimg.cc/VvX3dYZp/Vercel-Logo.png
 
 # 生涯模块
 # 生涯模块和技能图标轮播模块在一行，如不写则技能图标轮播模块单独占满一行。
@@ -65,23 +85,29 @@ careers:
   title: 生涯
   subtitle: 无限进步
   items:
-    - school: 软件工程
-      major: 学习
+    - school: EDU
+      major: 软件工程专业
       color: "#357ef5"
-  image: https://cdn.lightxi.com/cloudreve/uploads/2025/07/31/y5BrUhFv_67a216483c354.webp
+    - school: EDU
+      major: 计算机安全专业
+      color: "#F9C739"
+    - school: EDU
+      major: 系统全栈开发
+      color: "#27A841"
+  image: https://i.postimg.cc/63HpQfg5/Career-Photo.png
 
 # 性格模块
 personalities:
   tips: 性格
-  title: 主人公
+  title: 探索者
   color: "#56a178"
-  type: ENFJ-A / ENFJ-T
+  type: ENFJ-A # / ENFJ-T
   image: https://cdn.lightxi.com/cloudreve/uploads/2025/07/31/4jR76Exr_enfj.svg
   link: https://www.16personalities.com/
   linkText: 16personalities
   typeLink: https://www.16personalities.com/ch/esfj-人格
-  typeName: 主人公
-  myphoto: https://blog.xiowo.net/img/avatar.png
+  typeName: 未知领域
+  myphoto: https://i.postimg.cc/y8dwwfJx/Zhou-Jie-Photo.png
 
 # 座右铭
 motto:
@@ -92,8 +118,8 @@ motto:
 # 特长模块
 expertise:
   title: 特长
-  prefix: 数学、物理、化学
-  specialist: 专家
+  prefix: 茅厕战神
+  specialist: 泄粪专家
   content: 学习能力
   level: MAX
 
@@ -101,94 +127,104 @@ expertise:
 # 这个模块可以写多个，但最好不要超过 4 个。
 game:
   - title: 游戏爱好
-    img: https://solitude.js.org/example.png
-    subtitle: APEX LEGENDS
+    img: https://i.postimg.cc/vTymhRZ0/INSIDE.jpg
+    subtitle: INSIDE
     box_shadow: "0 -69px 203px 11px #04120f inset"
     # icon_group:
     #   - https://7.isyangs.cn/66/6738b472ce11f-66.webp
     #   - https://7.isyangs.cn/66/6738b48045a5b-66.webp
-    tips_left: C位
-    tips_right: ID Wleelw
+    tips_left: 最爱一款游戏
+    tips_right: ""
   - title: 游戏爱好
-    img: https://solitude.js.org/example.png
-    subtitle: 精灵与萤火意志
-    box_shadow: "0 -69px 203px 11px #415dc9 inset"
-    tips_right: "跑图大师"
+    img: https://i.postimg.cc/nzrSgNjw/Godof-War.jpg
+    subtitle: 战神 4
+    box_shadow: "0 -69px 203px 11px #04120f inset"
+    tips_right: "北欧神话"
 
 # 爱好模块
 likes:
   - type: "comic"
     tips: 爱好番剧 # 右上角提示
     title: 追番 # 标题
-    subtips: "科幻、动漫、喜剧" # 左下小字，可不要
+    subtips: "科幻、血腥、推理" # 左下小字，可不要
     list: # 最好就是五个或以上，相信你们肯定没那么少的。
-      - name: 你的名字 # 动漫或影视名
-        href: https://movie.douban.com/subject/26683290/ # B站或豆瓣某个位置
-        cover: https://s3.qjqq.cn/47/674c6e226855e.png!water # 封面图
-      - name: 四月是你的谎言
-        href: https://www.bilibili.com/bangumi/media/md1699
-        cover: https://s3.qjqq.cn/47/674c6e226855e.png!water
-      - name: 流浪地球2
-        href: https://movie.douban.com/subject/35267208/
-        cover: https://s3.qjqq.cn/47/674c6e226855e.png!water
-      - name: 花束般的恋爱
-        href: https://movie.douban.com/subject/34874432/
-        cover: https://s3.qjqq.cn/47/674c6e226855e.png!water
-      - name: 天气之子
-        href: https://movie.douban.com/subject/30402296/
-        cover: https://s3.qjqq.cn/47/674c6e226855e.png!water
+      - name: 星际穿越 # 动漫或影视名
+        href: https://www.netflix.com/title/70305903 # B站或豆瓣某个位置
+        cover: https://i.postimg.cc/Yq4Byrvg/xingjichuanyue.jpg!water # 封面图
+      - name: ""
+        href: # https://www.bilibili.com/bangumi/media/md1699
+        cover: # https://s3.qjqq.cn/47/674c6e226855e.png!water
+      - name: 行尸走肉
+        href: https://www.bilibili.com/video/BV1RWEkzrE1z/?spm_id_from=333.337.search-card.all.click&vd_source=3de9fb36dedc5b0d177867d2052d58d7
+        cover: https://i.postimg.cc/FKD19FNL/xingshizourou.webp!water
+      - name: ""
+        href: #https://movie.douban.com/subject/34874432/
+        cover: #https://s3.qjqq.cn/47/674c6e226855e.png!water
+      - name: 盗梦空间
+        href: https://movie.douban.com/subject/3541415/
+        cover: https://i.postimg.cc/8zGCMfCj/inception.jpg
     button: true # false 可以关闭右边按钮
     button_link: "/pyq/" # 跳转路径
     button_text: "观看记录" # 按钮文字
   - type: like-technology
-    bg: https://solitude.js.org/example.png
-    tips: 关注偏好
-    title: 数理化
-    subtips: 理工男
-  - type: like-music
-    bg: https://cdn.lightxi.com/cloudreve/uploads/2025/07/31/4ee6GcaT_43ed444540c635ee869d58067ece8452.jpg
+    bg: https://i.postimg.cc/nh0bwXn6/Jay-FT.png
     tips: 音乐偏好
-    title: 民谣、古典、轻音乐
-    subtips: 跟 王卓Sco 一起欣赏更多音乐
+    title: JAY
+    subtips: ""
     button: true
     button_text: 更多推荐
     button_link: /music/
+  - type: like-music
+    bg: https://i.postimg.cc/W1SXPrFr/technology.jpg
+    tips: 关注偏好
+    title: 数码科技、人工智能
+#    subtips: ""
+#    button: true
+#    button_text: 更多推荐
+#    button_link: /music/
 
 # 网站统计数据展示模块
 tj: # 统计
   provider: custom # 值为 51la（51la网站统计）或 custom（自建统计）
   url: https://umami-api.holyfox.net/ # 需要到51la官网注册自行获取 or 自行搭建 Heo 的 百度统计项目，填写访问地址即可
-  img: https://i.p-i.vip/33/20250725-6883987819a97.webp # 背景
+  img: https://i.postimg.cc/W1SXPrFr/technology.jpg # 背景
   desc: 本站采用自建数据统计
 
 # 个人信息模块
 oneself: # 按需填写
-  location: 中国，湖南省 # 所在位置
+  location: Huai'an City, Jiangsu Province, China # 所在位置
   birthYear: 2004 # 生日
-  university: 湖南大学 # 毕业学校
-  major: 软件工程 # 专业
-  occupation: 学生 # 职位
+  university: EDU # 毕业学校
+  major: 计算机专业 # 专业
+  occupation: 互联网 # 职位
   map: # 你所在位置的地图
-    light: https://solitude.js.org/example.png # 白天
-    dark: https://solitude.js.org/example.png # 夜晚
+    light: https://i.postimg.cc/vZRcHS98/Light-Map.jpg # 白天
+    dark: https://i.postimg.cc/j2LLCpZL/Dark-Map.png # 夜晚
 
 # 自定义
 cause:
   tip: 心路历程
   title: 为什么建站？
   content:
-    <br>创建这个站的时候，想要就是能够有一个自己能够<b>积累知识、积累兴趣</b>的地方。和他人分享，会让这些成为积累和沉淀。如果能够帮助到更多的人，帮助更多人解决问题，那一定是非常棒的事情。
     <br>
-    与大多数垂直类的技术博客不同，这里的种类会非常的繁杂，有<b>技能的教程干货</b>、有<b>生活上的吐槽和妙招</b>、有<b>话题上的思考和想法</b>。一般我研究什么、发现了什么都会分享在这里。
-    <br>
-    这些就是创造这个小站的本意，<b>也是我分享生活的方式</b>。有幸能和你相遇在这里，相信我们能共同留下一段美好记忆。
+    建这个站，其实原因很简单：我想要一个能让我<b>持续积累知识、顺便沉淀兴趣</b>的小角落。
+    把学到的、踩过的坑、突然想到的点子记录下来，再分享给别人，时间久了，它们就不只是零散的记忆，而是慢慢堆起来的东西。
+    如果这些内容刚好还能<b>帮你解决点问题</b>，那这件事就变得更酷了。
+    <br><br>
+    和那种“只写某一门技术”的博客不太一样，这里会有点杂。
+    可能是<b>技能相关的实战干货</b>，也可能是<b>生活里的吐槽和小技巧</b>，再或者是<b>一些突然冒出来的想法和思考</b>。
+    简单说一句：我在研究什么、发现了什么，大概率都会被我扔到这里。
+    <br><br>
+    这就是这个小站存在的原因，<b>也是我记录和分享生活的一种方式</b>。
+    如果你刚好路过这里，希望你能找到点有用的、好玩的，甚至是会心一笑的东西。
+    很高兴在这里遇见你，也希望我们能一起留下点不错的回忆。
     <br>
 
 # 十年之约
 tenyear:
   tips: 十年之约
   title: 一个人的寂寞，一群人的狂欢。
-  start: 2025-01-01
+  start: 2025-12-01
   end: 2035-01-01
 
 # 打赏列表
@@ -198,12 +234,62 @@ award:
   tips: 总金额：¥ {sum}，将全部用于博客的维护和更新。 # 必须带 {sum}，否则无法显示总金额
 rewardList: # 底部捐赠
   - name: "❖星港◎Star☆"
-    money: 100
-    time: 2025-01-01
+    money: 50
+    time: 2025-12-01
     icon: fab fa-weixin
     color: "#09bb07"
   - name: "沫塔尔猫"
-    money: 100
-    time: 2025-01-01
+    money: 10
+    time: 2025-12-01
+    icon: fab fa-alipay
+    color: "#1677FF"
+  - name: "青柠汽水"
+    money: 20
+    time: 2025-12-02
+    icon: fab fa-weixin
+    color: "#09bb07"
+  - name: "北岸晚风"
+    money: 66
+    time: 2025-12-05
+    icon: fab fa-alipay
+    color: "#1677FF"
+  - name: "云上旅人"
+    money: 30
+    time: 2025-12-08
+    icon: fab fa-weixin
+    color: "#09bb07"
+  - name: "向阳而生"
+    money: 88
+    time: 2025-12-12
+    icon: fab fa-alipay
+    color: "#1677FF"
+  - name: "星河拾光"
+    money: 18
+    time: 2025-12-16
+    icon: fab fa-weixin
+    color: "#09bb07"
+  - name: "雾里看花"
+    money: 25
+    time: 2025-12-20
+    icon: fab fa-alipay
+    color: "#1677FF"
+  - name: "小满未满"
+    money: 52
+    time: 2025-12-24
+    icon: fab fa-weixin
+    color: "#09bb07"
+  - name: "风月无边"
+    money: 99
+    time: 2025-12-27
+    icon: fab fa-alipay
+    color: "#1677FF"
+  - name: "晚星予你"
+    money: 36
+    time: 2025-12-30
+    icon: fab fa-weixin
+    color: "#09bb07"
+  - name: "听风入眠"
+    money: 15
+    time: 2026-01-03
     icon: fab fa-alipay
     color: "#1677FF"

@@ -117,13 +117,13 @@ aside:
   # Sticky: 固定位置 / noSticky: 不固定位置
   home: # on the homepage
     noSticky: "about"
-    Sticky: "allInfo"
+    Sticky: "allInfo,newest_comment"
   post: # on the article page
     noSticky: "about"
-    Sticky: "newestPost"
+    Sticky: "newestPost,newest_comment"
   page: # on the page
     noSticky: "about"
-    Sticky: "newestPost,allInfo"
+    Sticky: "newestPost,allInfo,newest_comment"
   # 菜单栏位置(0: 左 1: 右)
   position: 1 # Sidebar positioning(0: left 1: right)
 
@@ -285,6 +285,7 @@ post:
     # Comment count
     # 评论数
     comment: true
+
   # Reward
   # 打赏
   award:
@@ -482,7 +483,7 @@ typeit: false
 # Console
 # 控制台
 console:
-  enable: false
+  enable: true
   # Recent comments
   # 最新评论
   recentComment:
@@ -525,7 +526,7 @@ rightside:
 footer:
   # 社交图标
   information:
-    author: true # img url / false
+    author: https://img.zhoujie.de5.net/img/head.jpg # img url / false
     left:
       Github: https://github.com/zhou1143352957 || fab fa-github # 名称: 链接 || 图标
       Mail: mailto:zhou1143352957@gmail.com || far fa-envelope
@@ -534,17 +535,21 @@ footer:
       Tiktok: https://www.tiktok.com/@seckill5?_r=1&_t=ZP-93Kf3U0z1dG || fab fa-tiktok
   # 友情链接
   group:
-    # 导航:
-#    Archives: /archives/
-    Categories: /categories/
-    Tags: /tags/
-    # 排列:
-#    Cookies: /cookies/
-    Privacy: /privacy/
-    Copyright: /copyright/
+    导航:
+#      归档: /archives/
+      分类: /categories/
+      标签: /tags/
+    我的:
+#      Cookies: /cookies/
+      关于: /about/
+      装备: /kit/
+      音乐馆: /music/
+      隐私政策: /privacy/
+      版权声明: /copyright/
+#    友链: /links/
 
   # 随机友链
-  randomlink: false # 随机友链
+  randomlink: true # 随机友链
 
   # 备案
   beian:
@@ -779,27 +784,27 @@ pwa:
 comment:
   # Which commenting system to use(e.g. waline or waline,twikoo)
   # 使用哪个评论系统（例如： waline or waline,twikoo）
-  use: # waline, twikoo, valine, artalk, giscus # Up to two comment systems can be turned on at the same time
+  use: twikoo # waline, twikoo, valine, artalk, giscus # Up to two comment systems can be turned on at the same time
   # Whether to display the hot comment switch.
   # 是否显示热门评论开关
-  commentBarrage: false
+  commentBarrage: true
   # Lazy load
   # 懒加载评论区
-  lazyload: false
+  lazyload: true
   # Whether to display the comment count
   # 显示评论数
-  count: false
+  count: true
   # Sidebar displays the total number of comments
   # Sidebar 显示总评论数
-  sidebar: false
+  sidebar: true
   # PV
-  pv: false
+  pv: true
   # Avatar
   avatar: https://gravatar.com/avatar
   # Hot comment tips
   # 热评提示
   hot_tip:
-    enable: false
+    enable: true
     # Number of hot comments
     count: 3
   # recent comments(⚠️ Comments need to be configured first.)
@@ -810,7 +815,7 @@ comment:
     limit: 5 # 评论数 / Number of comments
 # Twikoo: https://solitude.js.org/configuration/comment/twikoo
 twikoo: # https://twikoo.js.org/
-  envId: # url: https://twikoo.sondy.top/
+  envId: https://twikoo-cloudflare.zhou1143352957.workers.dev # url: https://twikoo.sondy.top/
   region: # Environment locale, default is ap-shanghai, Tencent cloud environment fill ap-shanghai or ap-guangzhou; Vercel environment do not fill the.
   style: true # Use custom styles when turned on
   accessToken: # AccessToken
@@ -848,8 +853,8 @@ giscus:
 # --------------------------- start ---------------------------
 # Search
 search:
-  enable: false
-  type: # local / algolia / docsearch
+  enable: true
+  type: local # local / algolia / docsearch
   tags:
   # - Solitude
   # - Hexo
@@ -895,7 +900,7 @@ music:
 # Danmaku Page
 # 弹幕留言页面
 envelope:
-  enable: false
+  enable: true
   line: 10 # 显示行数
   speed: 20 # 播放速度
   hover: true # 鼠标悬停暂停
@@ -919,7 +924,7 @@ brevity:
 # Recent comments Page
 # 最近评论页面
 recent_comments:
-  enable: false
+  enable: true
   limit: 50 # ⚠️waline 仅支持最大50条评论 / ⚠️waline only supports a maximum of 50 comments
   cache: 0.2 # 1 = 1天 / 1 = 1 day
   page: /recentcomments/ # 最近评论页面 / recent comments page
