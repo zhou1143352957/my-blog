@@ -21,7 +21,7 @@ site:
   name:
     class: text # text / i_class / img
     custom: ZHOU JIE # Solitude / fas fa-ghost / /img/pwa/favicon.ico
-  icon: https://i.postimg.cc/SRtgTJX9/head.jpg # Site icon / 网站图标
+  icon: https://i.postimg.cc/SRtgTJX9/head.jpg?v=20260210 # Site icon / 网站图标
 # --------------------------- end ---------------------------
 
 # --------------------------- start ---------------------------
