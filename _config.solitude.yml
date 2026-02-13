@@ -536,7 +536,7 @@ footer:
   # 友情链接
   group:
     导航:
-#      归档: /archives/
+      归档: /archives/
       分类: /categories/
       标签: /tags/
     我的:

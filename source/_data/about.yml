@@ -193,7 +193,7 @@ tj: # 统计
 # 个人信息模块
 oneself: # 按需填写
   location: Huai'an City, Jiangsu Province, China # 所在位置
-  birthYear: 2004 # 生日
+  birthYear: 2001 # 生日
   university: EDU # 毕业学校
   major: 计算机专业 # 专业
   occupation: 互联网 # 职位
