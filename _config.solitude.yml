@@ -101,7 +101,7 @@ hometop:
     enable: true
     sup: 一切从此开始 #置顶
     title: 目标所向皆星河
-    url: https://solitude.js.org/
+    url: / #https://solitude.js.org/
     img: https://img.zhoujie.de5.net/img/HeadPoster.jpg
     color: "none"
 # --------------------------- end ---------------------------
