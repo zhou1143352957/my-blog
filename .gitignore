@@ -6,10 +6,7 @@ node_modules/
 public/
 .deploy*/
 _multiconfig.yml
-.idea/vcs.xml
-.idea/my-blog.iml
-.idea/modules.xml
-.idea/misc.xml
+.idea/
 AGENTS.md
 .serena/project.yml
 themes/solitude/

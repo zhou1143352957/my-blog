@@ -42,8 +42,11 @@ nav:
       归档: /archives/ || fas fa-folder-closed # item name: link || icon
       分类: /categories/ || fas fa-clone
       标签: /tags/ || fas fa-tags
+    游戏:
+      全部游戏: /games/ || fas fa-gamepad
+    工具:
+      全部工具: /tools/ || fas fa-toolbox
     友链:
-      朋友圈: /moments/ || fas fa-wifi
       友情链接: /links/ || fas fa-user-group
       宝藏博主: javascript:travelling() || fas fa-gift
     我的:
@@ -57,7 +60,7 @@ nav:
     random: true # Random article / 随机文章按钮
     custom:
       - name: 开往 # 名字
-        url: / # 跳转链接
+        url: https://www.travellings.cn/go.html # 跳转链接
         icon: fas fa-train # 图标
         onclick: # 点击事件
         id: travellings_button # id
@@ -95,8 +98,8 @@ hometop:
         img: https://i.postimg.cc/nhgjwjCS/git.png
         color: "#df5b40"
   group:
-    热门: /tags/Fire/ || fas fa-fire || linear-gradient(to right,#f65,#ffbf37)
-    必看: /tags/Fire/ || fas fa-fire || linear-gradient(to right,#2e3a41,#ffbf37)、
+    热门: /tags/AI/ || fas fa-fire || linear-gradient(to right,#f65,#ffbf37)
+    必看: /tags/AI-Agent/ || fas fa-fire || linear-gradient(to right,#2e3a41,#ffbf37)
   recommendList:
     enable: true
     sup: 一切从此开始 #置顶
@@ -927,7 +930,7 @@ recent_comments:
   enable: true
   limit: 50 # ⚠️waline 仅支持最大50条评论 / ⚠️waline only supports a maximum of 50 comments
   cache: 0.2 # 1 = 1天 / 1 = 1 day
-  page: /recentcomments/ # 最近评论页面 / recent comments page
+  page: /recentcomment/ # 最近评论页面 / recent comments page
 # --------------------------- end ---------------------------
 
 # --------------------------- start ---------------------------

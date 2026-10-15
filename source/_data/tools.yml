@@ -1,0 +1,13 @@
+# 工具清单
+# 新增一个工具：在 source/tools/ 下建目录，然后在这里加一条记录即可，导航和聚合页都不用改
+# 字段：name 名称 / specification 功能说明 / description 简介 / image 封面 / link 站内路径 / link_text 按钮文案
+
+- class_name: 开发工具
+  description: 纯浏览器运行，数据不上传，可放心使用
+  equipment_list:
+    - name: JSON 格式化
+      specification: 格式化 / 压缩 / 校验
+      description: 粘贴 JSON 即可格式化或压缩，并实时提示语法错误位置
+      image: https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=minimal%20flat%20illustration%20of%20a%20JSON%20code%20formatting%20tool%2C%20curly%20braces%20and%20colorful%20code%20lines%2C%20developer%20aesthetic%2C%20clean%20background&image_size=landscape_4_3
+      link: /tools/json-formatter/
+      link_text: 打开工具

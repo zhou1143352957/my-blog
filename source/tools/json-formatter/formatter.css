@@ -1,0 +1,96 @@
+.json-tool {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 2.5rem;
+}
+
+.json-tool-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.json-btn {
+    padding: 0.35rem 0.9rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--efu-secondbg);
+    color: var(--efu-fontcolor);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.json-btn:hover {
+    color: #fff;
+    background: var(--efu-theme);
+}
+
+.json-btn-primary {
+    background: var(--efu-theme);
+    color: #fff;
+}
+
+.json-select {
+    margin-left: auto;
+    padding: 0.35rem 0.5rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--efu-secondbg);
+    color: var(--efu-fontcolor);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.json-tool-body {
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+}
+
+.json-textarea {
+    display: block;
+    flex: 1 1 50%;
+    min-width: 0;
+    height: calc(100vh - 300px);
+    min-height: 520px;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 12px;
+    background: var(--efu-secondbg);
+    color: var(--efu-fontcolor);
+    font-family: "monospace", monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    resize: vertical;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.json-status {
+    margin: 0 0 0.8rem;
+    font-size: 0.8rem;
+    text-align: left;
+    color: var(--efu-gray);
+}
+
+.json-status.is-ok {
+    color: var(--efu-speed);
+}
+
+.json-status.is-error {
+    color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+    .json-tool-body {
+        flex-direction: column;
+    }
+
+    .json-textarea {
+        height: auto;
+        min-height: 240px;
+    }
+}
