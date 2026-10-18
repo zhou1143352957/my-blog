@@ -14,6 +14,6 @@
     - name: 贪吃蛇
       specification: 键盘 / 触屏
       description: 经典贪吃蛇，方向键或 WASD 控制方向，空格暂停，手机上滑动棋盘即可操作
-      image: https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=retro%20pixel%20art%20illustration%20of%20a%20snake%20game%2C%20green%20snake%20eating%20a%20red%20apple%20on%20a%20dark%20grid%2C%20flat%20minimal%20design%2C%20vibrant%20colors&image_size=landscape_4_3
+      image: /games/snake/cover.jpg
       link: /games/snake/
       link_text: 开始游戏
