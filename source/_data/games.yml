@@ -2,9 +2,15 @@
 # 新增一个游戏：在 source/games/ 下建目录，然后在这里加一条记录即可，导航和聚合页都不用改
 # 字段：name 名称 / specification 玩法说明 / description 简介 / image 封面 / link 站内路径 / link_text 按钮文案
 
-- class_name: 休闲小游戏
-  description: 浏览器直接打开就能玩，无需下载安装
+- class_name: 网页游戏
+  description: 浏览器直接打开就能玩，不用下载安装
   equipment_list:
+    - name: 废土余生
+      specification: 俯视 / 双摇杆 / 搜刮 / 撤离
+      description: 俯视视角的废墟生存搜刮。白天 60–75 秒在六张手工街区里翻箱倒柜，入夜断电、尸潮压上来，带着物资跑到信号烟处撤离。程序化绘制的雨雾、灯光与车壳，四把枪、翻滚与冲刺，装备与弹药跨区继承，进度和评价存在本地
+      image: /games/wasteland/cover.jpg
+      link: /games/wasteland/
+      link_text: 进入废土
     - name: 贪吃蛇
       specification: 键盘 / 触屏
       description: 经典贪吃蛇，方向键或 WASD 控制方向，空格暂停，手机上滑动棋盘即可操作

@@ -1,0 +1,1625 @@
+/* ==========================================================================
+   废土余生 · 俯视生存
+   所有样式都收在 .wl-* 命名空间内，避免被文章页/主题的 p、button、a 规则污染。
+   ========================================================================== */
+
+.wl-page {
+    --wl-amber: #ffc46b;
+    --wl-orange: #ff7a4d;
+    --wl-teal: #7af0c8;
+    --wl-ink: #070b0c;
+    --wl-text: #efe7db;
+    --wl-dim: #a99f92;
+    --wl-line: rgba(255, 235, 205, 0.12);
+    --wl-panel: linear-gradient(180deg, rgba(18, 22, 23, 0.78), rgba(8, 11, 12, 0.62));
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 1rem 1rem 2.4rem;
+    color: var(--wl-text);
+    font-family: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+.wl-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #050809;
+    box-shadow:
+        0 40px 90px -50px rgba(0, 0, 0, 0.95),
+        0 10px 30px -18px rgba(0, 0, 0, 0.9),
+        inset 0 0 0 1px rgba(255, 235, 205, 0.10);
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    isolation: isolate;
+}
+
+.wl-stage::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+        inset 0 0 60px rgba(0, 0, 0, 0.45),
+        inset 0 0 0 1px rgba(255, 240, 210, 0.06);
+}
+
+.wl-stage.is-playing {
+    cursor: none;
+}
+
+.wl-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #0a0d0e;
+}
+
+/* ------------------------------------------------------------------ HUD */
+.wl-hud {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--wl-text);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+
+.wl-hud .is-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+.wl-topbar {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    right: 18px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* 生命 / 护甲 / 体力 */
+.wl-vitals {
+    width: 238px;
+    padding: 10px 12px 9px;
+    border-radius: 12px;
+    background: var(--wl-panel);
+    border: 1px solid var(--wl-line);
+    box-shadow: 0 16px 34px -24px #000, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.wl-vital {
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+    align-items: center;
+    gap: 7px;
+}
+
+.wl-vital-label {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: rgba(239, 231, 219, 0.55);
+}
+
+.wl-vital-track {
+    position: relative;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.075);
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.wl-vital-track > b {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    transition: width 0.16s linear;
+}
+
+.wl-vital-hp .wl-vital-track > b {
+    background: linear-gradient(90deg, #d93f35, #ff8a5c);
+    box-shadow: 0 0 12px rgba(255, 95, 70, 0.45);
+}
+
+.wl-vital-hp .wl-vital-track.is-low > b {
+    animation: wl-hp-pulse 0.9s ease-in-out infinite;
+}
+
+.wl-vital-armor .wl-vital-track > b {
+    background: linear-gradient(90deg, #4d7189, #a6d3e4);
+    box-shadow: 0 0 12px rgba(140, 200, 225, 0.3);
+}
+
+.wl-vital > em {
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    color: rgba(239, 231, 219, 0.88);
+}
+
+.wl-stamina {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 2px;
+}
+
+.wl-stamina > span {
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: rgba(239, 231, 219, 0.4);
+    width: 38px;
+}
+
+.wl-stamina > i {
+    flex: 1;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.wl-stamina > i > b {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #8d7a54, #ffd9a0);
+    border-radius: inherit;
+    transition: width 0.12s linear;
+}
+
+@keyframes wl-hp-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+}
+
+/* 计时器 */
+.wl-clock {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px 7px 8px;
+    border-radius: 999px;
+    background: var(--wl-panel);
+    border: 1px solid var(--wl-line);
+    box-shadow: 0 16px 34px -24px #000;
+}
+
+.wl-clock-ring {
+    position: relative;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: conic-gradient(from -90deg, var(--wl-amber) calc(var(--p, 1) * 1turn), rgba(255, 246, 225, 0.10) 0);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 22px -8px rgba(255, 196, 107, 0.65);
+}
+
+.wl-clock-ring::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 35%, #1a2020, #0a0d0e 72%);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.wl-clock-face {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.wl-clock-face > span {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+    color: #fff4df;
+}
+
+.wl-clock-face > em {
+    margin-top: 3px;
+    font-style: normal;
+    font-size: 7px;
+    letter-spacing: 0.22em;
+    color: rgba(255, 196, 107, 0.72);
+    transform: translateX(0.11em);
+}
+
+.wl-clock-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-right: 4px;
+}
+
+.wl-clock-copy > b {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--wl-amber);
+}
+
+.wl-clock-copy > span {
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    color: rgba(239, 231, 219, 0.5);
+}
+
+.wl-clock.is-night .wl-clock-ring {
+    background: conic-gradient(from -90deg, var(--wl-teal) calc(var(--p, 1) * 1turn), rgba(140, 255, 210, 0.10) 0);
+    box-shadow: 0 0 22px -8px rgba(122, 240, 200, 0.6);
+}
+
+.wl-clock.is-night .wl-clock-copy > b {
+    color: var(--wl-teal);
+}
+
+.wl-clock.is-night .wl-clock-face > em {
+    color: rgba(122, 240, 200, 0.72);
+}
+
+/* 小地图 */
+.wl-map-wrap {
+    width: 196px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.wl-map-panel {
+    padding: 8px;
+    border-radius: 12px;
+    background: var(--wl-panel);
+    border: 1px solid var(--wl-line);
+    box-shadow: 0 16px 34px -24px #000;
+}
+
+.wl-map-panel > canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 7px;
+    background: #101617;
+    border: 1px solid rgba(255, 235, 205, 0.08);
+}
+
+.wl-map-foot {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    padding: 7px 2px 2px;
+}
+.wl-map-foot > span {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--wl-amber);
+}
+.wl-map-foot > b {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(239, 231, 219, 0.9);
+    letter-spacing: 0.05em;
+}
+.wl-exit-state {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px;
+    font-size: 9px;
+    color: rgba(239, 231, 219, 0.52);
+    letter-spacing: 0.04em;
+}
+.wl-exit-state > i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #d2523e;
+    box-shadow: 0 0 8px rgba(210, 82, 62, 0.8);
+}
+.wl-exit-state.is-open {
+    color: rgba(122, 240, 200, 0.82);
+}
+.wl-exit-state.is-open > i {
+    background: var(--wl-teal);
+    box-shadow: 0 0 10px rgba(122, 240, 200, 0.9);
+    animation: wl-dot-pulse 1.4s ease-in-out infinite;
+}
+@keyframes wl-dot-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.8); }
+}
+
+.wl-sys {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    pointer-events: auto;
+}
+
+.wl-icon-btn {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--wl-line);
+    background: rgba(10, 14, 15, 0.7);
+    color: rgba(239, 231, 219, 0.75);
+    font-family: inherit;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+.wl-icon-btn > i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--wl-teal);
+    box-shadow: 0 0 7px rgba(122, 240, 200, 0.8);
+}
+.wl-icon-btn:hover {
+    color: var(--wl-amber);
+    border-color: rgba(255, 196, 107, 0.4);
+    background: rgba(24, 22, 18, 0.78);
+}
+.wl-icon-btn.is-off > i {
+    background: #7a6f62;
+    box-shadow: none;
+}
+
+/* 武器卡 */
+.wl-weapon-card {
+    position: absolute;
+    left: 18px;
+    bottom: 16px;
+    width: 296px;
+    padding: 10px 12px 9px;
+    border-radius: 12px;
+    background: var(--wl-panel);
+    border: 1px solid var(--wl-line);
+    box-shadow: 0 20px 44px -28px #000;
+}
+
+.wl-weapon-top {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    min-height: 16px;
+}
+.wl-weapon-top > span {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: rgba(255, 196, 107, 0.72);
+}
+.wl-weapon-top > b {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #f7efe3;
+}
+.wl-weapon-top > em {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    font-style: normal;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    color: var(--wl-orange);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+.wl-weapon-top > em.is-on {
+    opacity: 1;
+}
+.wl-weapon-top > em > i {
+    display: block;
+    width: 52px;
+    height: 2px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+}
+.wl-weapon-top > em > i > b {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--wl-orange);
+}
+
+.wl-ammo-line {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+    margin: 2px 0 7px;
+    line-height: 1;
+}
+.wl-ammo-line > b {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: #fff4e3;
+}
+.wl-ammo-line > b.is-empty {
+    color: #ff6b5a;
+}
+.wl-ammo-line > span {
+    font-size: 16px;
+    color: rgba(239, 231, 219, 0.25);
+    margin: 0 1px;
+}
+.wl-ammo-line > em {
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: rgba(239, 231, 219, 0.55);
+}
+.wl-ammo-line > small {
+    margin-left: auto;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    color: rgba(239, 231, 219, 0.32);
+}
+
+.wl-slots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+}
+.wl-slot {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0 4px;
+    padding: 4px 5px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 235, 205, 0.08);
+    background: rgba(255, 255, 255, 0.025);
+    opacity: 0.28;
+    transition: opacity 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.wl-slot > i {
+    font-style: normal;
+    font-size: 7px;
+    font-weight: 700;
+    color: rgba(239, 231, 219, 0.4);
+    grid-row: span 2;
+}
+.wl-slot > b {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: rgba(239, 231, 219, 0.82);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.wl-slot > em {
+    font-style: normal;
+    font-size: 7px;
+    color: rgba(239, 231, 219, 0.4);
+    white-space: nowrap;
+}
+.wl-slot.is-owned {
+    opacity: 0.72;
+}
+.wl-slot.is-active {
+    opacity: 1;
+    border-color: rgba(255, 196, 107, 0.55);
+    background: linear-gradient(180deg, rgba(255, 196, 107, 0.12), rgba(255, 196, 107, 0.03));
+}
+.wl-slot.is-active > i {
+    color: var(--wl-amber);
+}
+
+/* 全部口径备弹：12G 有子弹但没有霰弹枪时会标红，提示去找枪械箱 */
+.wl-ammo-types {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-top: 5px;
+}
+.wl-ammo-chip {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 3px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.035);
+    color: rgba(239, 231, 219, 0.48);
+    font-size: 7px;
+    letter-spacing: 0.03em;
+}
+.wl-ammo-chip > i {
+    font-style: normal;
+    color: rgba(239, 231, 219, 0.42);
+}
+.wl-ammo-chip > b {
+    font-size: 9px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: rgba(239, 231, 219, 0.82);
+}
+.wl-ammo-chip.is-empty {
+    opacity: 0.3;
+}
+.wl-ammo-chip.is-useless {
+    border-color: rgba(255, 130, 95, 0.34);
+    background: rgba(255, 95, 65, 0.07);
+    color: rgba(255, 170, 140, 0.85);
+}
+.wl-ammo-chip.is-useless > i::after {
+    content: " · 无枪";
+    font-size: 6px;
+    opacity: 0.8;
+}
+.wl-ammo-chip.is-useless > b {
+    color: #ffb08a;
+}
+
+/* 物资 / 快捷键 */
+.wl-inv {
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    min-width: 230px;
+    padding: 9px 11px;
+    border-radius: 12px;
+    background: var(--wl-panel);
+    border: 1px solid var(--wl-line);
+    box-shadow: 0 20px 44px -28px #000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+}
+.wl-inv-item {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    font-variant-numeric: tabular-nums;
+}
+.wl-ico {
+    font-size: 10px;
+    line-height: 1;
+    margin-right: 1px;
+}
+.wl-ico-med {
+    color: #ff8ea2;
+    font-weight: 700;
+}
+.wl-ico-loot {
+    color: var(--wl-amber);
+    font-size: 8px;
+}
+.wl-inv-item > b {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f7efe3;
+}
+.wl-inv-item > em {
+    font-style: normal;
+    font-size: 8px;
+    letter-spacing: 0.06em;
+    color: rgba(239, 231, 219, 0.42);
+}
+.wl-inv-item > .wl-inv-sep {
+    color: rgba(239, 231, 219, 0.22);
+    font-size: 10px;
+}
+.wl-inv-item > #wl-loot-total {
+    font-size: 10px;
+    color: rgba(239, 231, 219, 0.48);
+}
+.wl-keys {
+    flex-basis: 100%;
+    text-align: right;
+    font-size: 8px;
+    letter-spacing: 0.05em;
+    color: rgba(239, 231, 219, 0.3);
+    border-top: 1px solid rgba(255, 235, 205, 0.07);
+    padding-top: 6px;
+}
+
+/* 中央提示 */
+.wl-hint {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -6px);
+    padding: 7px 16px;
+    border-radius: 999px;
+    background: rgba(7, 11, 12, 0.72);
+    border: 1px solid rgba(255, 235, 205, 0.1);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--wl-amber);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    white-space: nowrap;
+}
+.wl-hint.is-on {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+/* 搜刮进度 */
+.wl-prompt {
+    position: absolute;
+    left: 50%;
+    bottom: 108px;
+    transform: translateX(-50%);
+    width: 250px;
+    padding: 8px 11px 7px;
+    border-radius: 10px;
+    background: rgba(8, 12, 13, 0.82);
+    border: 1px solid rgba(255, 235, 205, 0.14);
+    box-shadow: 0 18px 40px -24px #000;
+    transition: opacity 0.16s ease;
+}
+.wl-prompt.is-searching {
+    border-color: rgba(255, 196, 107, 0.45);
+}
+.wl-prompt-body {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.wl-prompt-body > kbd {
+    display: inline-grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 235, 205, 0.3);
+    border-bottom-width: 2px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--wl-amber);
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    box-shadow: none;
+}
+.wl-prompt-body > span {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(255, 240, 215, 0.86);
+}
+.wl-prompt-track {
+    height: 3px;
+    margin-top: 7px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+.wl-prompt-track > b {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--wl-amber), var(--wl-orange));
+    transition: width 0.05s linear;
+}
+
+/* 拾取提示 */
+.wl-toasts {
+    position: absolute;
+    right: 18px;
+    bottom: 116px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+.wl-toasts > p {
+    margin: 0;
+    padding: 5px 10px;
+    border-radius: 7px;
+    border-left: 2px solid var(--wl-amber);
+    background: rgba(8, 12, 13, 0.82);
+    color: rgba(255, 240, 215, 0.86);
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    animation: wl-toast-in 0.22s ease;
+    transition: opacity 0.45s ease;
+}
+.wl-toasts > p.is-out {
+    opacity: 0;
+}
+@keyframes wl-toast-in {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: none; }
+}
+
+/* 受伤红边 */
+.wl-damage {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0) 42%, rgba(168, 26, 19, 0.42) 100%),
+        linear-gradient(180deg, rgba(168, 26, 19, 0.16), transparent 22%, transparent 78%, rgba(168, 26, 19, 0.2));
+    transition: opacity 0.18s linear;
+}
+
+/* ------------------------------------------------------------------ 覆盖层 */
+.wl-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 24px;
+    background:
+        radial-gradient(ellipse at 50% 44%, rgba(10, 14, 14, 0.38) 0%, rgba(4, 7, 8, 0.76) 62%, rgba(2, 4, 5, 0.92) 100%),
+        linear-gradient(180deg, rgba(3, 6, 7, 0.28), rgba(3, 6, 7, 0.64));
+    transition: opacity 0.32s ease, visibility 0.32s ease;
+}
+.wl-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(255, 196, 107, 0.06), transparent 32%),
+        radial-gradient(circle at 82% 76%, rgba(255, 122, 77, 0.05), transparent 30%);
+}
+.wl-overlay.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.wl-overlay-inner {
+    position: relative;
+    width: min(720px, 100%);
+    max-height: 100%;
+    overflow: auto;
+    padding: 6px 6px 0;
+    text-align: center;
+    scrollbar-width: thin;
+}
+.wl-overlay-inner::-webkit-scrollbar {
+    width: 4px;
+}
+.wl-overlay-inner::-webkit-scrollbar-thumb {
+    background: rgba(255, 196, 107, 0.28);
+    border-radius: 4px;
+}
+
+.wl-kicker {
+    margin: 0 0 8px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    text-indent: 0.34em;
+    color: rgba(255, 196, 107, 0.66);
+}
+.wl-title {
+    margin: 0;
+    font-family: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: clamp(34px, 5.4vw, 56px);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-indent: 0.18em;
+    line-height: 1.1;
+    color: #fff3df;
+    text-shadow:
+        0 0 42px rgba(255, 140, 80, 0.24),
+        0 2px 0 rgba(0, 0, 0, 0.45);
+}
+.wl-title::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 2px;
+    margin: 14px auto 0;
+    background: linear-gradient(90deg, transparent, var(--wl-amber), transparent);
+    opacity: 0.7;
+}
+.wl-sub {
+    margin: 10px 0 0;
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    text-indent: 0.42em;
+    color: rgba(239, 231, 219, 0.38);
+}
+.wl-page .wl-overlay .wl-desc {
+    margin: 18px auto 0;
+    max-width: 540px;
+    font-size: 12px;
+    line-height: 2;
+    color: rgba(218, 209, 197, 0.72);
+    white-space: pre-line;
+    text-align: center !important;
+}
+
+.wl-levels {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    max-width: 580px;
+    margin: 20px auto 0;
+}
+.wl-levels.is-hidden {
+    display: none;
+}
+.wl-level-card {
+    position: relative;
+    appearance: none;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 1px 8px;
+    padding: 9px 10px;
+    border-radius: 9px;
+    border: 1px solid rgba(255, 235, 205, 0.10);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+    color: rgba(239, 231, 219, 0.76);
+    text-align: left;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+.wl-level-card:hover:not(:disabled) {
+    border-color: rgba(255, 196, 107, 0.45);
+    background: rgba(255, 196, 107, 0.06);
+    transform: translateY(-1px);
+}
+.wl-level-card.is-active {
+    border-color: rgba(255, 196, 107, 0.7);
+    background: linear-gradient(180deg, rgba(255, 196, 107, 0.14), rgba(255, 122, 77, 0.05));
+    box-shadow: 0 8px 26px -18px rgba(255, 150, 80, 0.9);
+}
+.wl-level-card.is-locked {
+    opacity: 0.46;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+}
+.wl-lv-no {
+    grid-row: span 2;
+    font-style: normal;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(255, 196, 107, 0.58);
+}
+.wl-level-card > strong {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(255, 245, 230, 0.9);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.wl-lv-meta {
+    font-size: 8px;
+    letter-spacing: 0.05em;
+    color: rgba(239, 231, 219, 0.34);
+}
+.wl-lv-rank {
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    font-style: normal;
+    font-size: 8px;
+    font-weight: 800;
+    color: var(--wl-amber);
+    opacity: 0.65;
+}
+.wl-rank-S { color: #ffd98a; }
+.wl-rank-A { color: #7af0c8; }
+.wl-rank-B { color: #9cc7e2; }
+.wl-rank-C { color: #b9a999; }
+
+.wl-grade {
+    animation: wl-grade-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: 92px;
+    height: 92px;
+    margin: 16px auto 4px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 196, 107, 0.4);
+    background:
+        radial-gradient(circle at 50% 36%, rgba(255, 196, 107, 0.18), rgba(10, 14, 15, 0.7) 70%);
+    box-shadow:
+        0 0 34px -10px rgba(255, 170, 90, 0.45),
+        inset 0 0 0 4px rgba(10, 13, 14, 0.8),
+        inset 0 0 0 5px rgba(255, 196, 107, 0.16);
+}
+.wl-grade.is-hidden {
+    display: none;
+}
+.wl-grade > b {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--wl-amber);
+    text-shadow: 0 0 22px rgba(255, 180, 100, 0.45);
+}
+.wl-grade > span {
+    font-size: 7px;
+    letter-spacing: 0.18em;
+    color: rgba(239, 231, 219, 0.55);
+}
+@keyframes wl-grade-in {
+    from { opacity: 0; transform: scale(0.72) rotate(-8deg); }
+    to { opacity: 1; transform: scale(1) rotate(0); }
+}
+.wl-grade.wl-grade-A { border-color: rgba(122, 240, 200, 0.45); }
+.wl-grade.wl-grade-A > b { color: var(--wl-teal); }
+.wl-grade.wl-grade-B { border-color: rgba(156, 199, 226, 0.4); }
+.wl-grade.wl-grade-B > b { color: #9cc7e2; }
+.wl-grade.wl-grade-C { border-color: rgba(185, 169, 153, 0.36); }
+.wl-grade.wl-grade-C > b { color: #c2b3a2; }
+
+.wl-overlay-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 20px auto 0;
+}
+.wl-btn {
+    appearance: none;
+    padding: 10px 26px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #ffc46b, #ff8a4d);
+    color: #211408;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    box-shadow:
+        0 14px 34px -14px rgba(255, 130, 70, 0.85),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transition: filter 0.18s ease, transform 0.18s ease;
+}
+.wl-btn:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+}
+.wl-btn:active {
+    transform: translateY(0);
+}
+.wl-btn-ghost {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 235, 205, 0.2);
+    color: rgba(239, 231, 219, 0.72);
+    box-shadow: none;
+    font-weight: 500;
+}
+.wl-btn-ghost:hover {
+    border-color: rgba(255, 196, 107, 0.5);
+    color: var(--wl-amber);
+    background: rgba(255, 196, 107, 0.06);
+}
+.wl-overlay-foot {
+    margin: 16px auto 0;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: rgba(239, 231, 219, 0.28);
+}
+.wl-overlay-foot.is-hidden {
+    display: none;
+}
+
+/* 游戏结束时压暗标题区，给评价让位 */
+.wl-overlay.is-end .wl-levels {
+    display: none;
+}
+.wl-overlay.is-end .wl-sub,
+.wl-overlay.is-end .wl-kicker {
+    display: none;
+}
+
+/* 覆盖层打开时收起 HUD，避免和标题/评价抢视觉 */
+.wl-hud.is-overlay .wl-topbar,
+.wl-hud.is-overlay .wl-weapon-card,
+.wl-hud.is-overlay .wl-inv,
+.wl-hud.is-overlay .wl-hint,
+.wl-hud.is-overlay .wl-prompt,
+.wl-hud.is-overlay .wl-toasts,
+.wl-hud.is-overlay .wl-damage,
+.wl-hud.is-overlay .wl-touch {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* ------------------------------------------------------------------ 触屏 */
+.wl-touch {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease;
+}
+.wl-touch.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.wl-stick {
+    position: absolute;
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 235, 205, 0.16);
+    background:
+        radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.06), rgba(6, 10, 11, 0.34) 70%);
+    pointer-events: auto;
+    touch-action: none;
+}
+.wl-stick-move {
+    left: 18px;
+    bottom: 18px;
+}
+.wl-stick-aim {
+    right: 18px;
+    bottom: 18px;
+    border-color: rgba(255, 196, 107, 0.22);
+}
+.wl-stick > i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 46px;
+    height: 46px;
+    margin: -23px 0 0 -23px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 235, 205, 0.28);
+    background: radial-gradient(circle at 40% 32%, rgba(255, 245, 225, 0.26), rgba(255, 245, 225, 0.08) 70%);
+    box-shadow: 0 8px 18px -10px #000;
+    pointer-events: none;
+}
+.wl-stick > span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -15px;
+    text-align: center;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    color: rgba(239, 231, 219, 0.4);
+}
+.wl-touch-acts {
+    position: absolute;
+    right: 18px;
+    bottom: 148px;
+    display: grid;
+    grid-template-columns: repeat(3, 56px);
+    gap: 6px;
+    pointer-events: auto;
+}
+.wl-touch-act {
+    appearance: none;
+    height: 46px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 235, 205, 0.14);
+    background: rgba(10, 14, 15, 0.5);
+    color: rgba(255, 240, 215, 0.82);
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    touch-action: none;
+}
+.wl-touch-act:active {
+    background: rgba(255, 196, 107, 0.18);
+    border-color: rgba(255, 196, 107, 0.5);
+    color: var(--wl-amber);
+}
+
+/* 说明文字 */
+.wl-page .wl-tip {
+    margin: 14px auto 0;
+    max-width: 900px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 2;
+    color: var(--efu-gray, #8f8a82);
+}
+
+/* ------------------------------------------------------------------ 响应式 */
+@media (max-width: 820px) {
+    .wl-page {
+        padding: 0.6rem 0.6rem 2rem;
+    }
+    .wl-stage {
+        aspect-ratio: 4 / 3;
+        border-radius: 14px;
+    }
+    .wl-topbar {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        gap: 8px;
+    }
+    .wl-vitals {
+        width: 180px;
+        padding: 8px 9px;
+        gap: 5px;
+    }
+    .wl-vital {
+        grid-template-columns: 26px 1fr 26px;
+        gap: 5px;
+    }
+    .wl-vital-label {
+        font-size: 7px;
+    }
+    .wl-clock {
+        padding: 5px 10px 5px 6px;
+        gap: 7px;
+    }
+    .wl-clock-ring {
+        width: 48px;
+        height: 48px;
+    }
+    .wl-clock-face > span {
+        font-size: 11px;
+    }
+    .wl-clock-copy > b {
+        font-size: 10px;
+    }
+    .wl-map-wrap {
+        width: 142px;
+        gap: 5px;
+    }
+    .wl-map-panel {
+        padding: 6px;
+    }
+    .wl-map-foot > b {
+        font-size: 9px;
+    }
+    .wl-exit-state {
+        font-size: 8px;
+    }
+    .wl-weapon-card {
+        width: 235px;
+        left: 10px;
+        bottom: 10px;
+        padding: 8px 9px;
+    }
+    .wl-inv {
+        right: 10px;
+        bottom: 10px;
+        min-width: 178px;
+        padding: 7px 9px;
+        gap: 4px 10px;
+    }
+    .wl-keys {
+        display: none;
+    }
+    .wl-toasts {
+        right: 10px;
+        bottom: 92px;
+    }
+    .wl-prompt {
+        bottom: 92px;
+    }
+    .wl-overlay {
+        padding: 16px 14px;
+    }
+    .wl-title {
+        font-size: clamp(28px, 8vw, 42px);
+    }
+    .wl-desc {
+        font-size: 11px;
+        line-height: 1.85;
+        margin-top: 12px;
+    }
+    .wl-levels {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 14px;
+        gap: 6px;
+    }
+    .wl-level-card {
+        padding: 7px 8px;
+    }
+    .wl-overlay-actions {
+        margin-top: 14px;
+    }
+    .wl-btn {
+        padding: 8px 18px;
+        font-size: 11px;
+    }
+    .wl-overlay-foot {
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 560px) {
+    .wl-stage {
+        aspect-ratio: 3 / 4;
+        border-radius: 12px;
+    }
+    .wl-topbar {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        gap: 4px;
+    }
+    .wl-vitals {
+        width: 128px;
+        padding: 6px 7px;
+        gap: 4px;
+        border-radius: 9px;
+    }
+    .wl-vital {
+        grid-template-columns: 1fr 20px;
+        gap: 4px;
+    }
+    .wl-vital-label {
+        display: none;
+    }
+    .wl-vital-track {
+        height: 5px;
+    }
+    .wl-vital > em {
+        font-size: 9px;
+    }
+    .wl-stamina {
+        padding-top: 0;
+    }
+    .wl-stamina > span {
+        display: none;
+    }
+    .wl-clock {
+        left: 50%;
+        right: auto;
+        top: 8px;
+        transform: translateX(-50%);
+        padding: 4px 7px 4px 4px;
+        gap: 0;
+        border-radius: 999px;
+    }
+    .wl-clock-ring {
+        width: 38px;
+        height: 38px;
+    }
+    .wl-clock-face > span {
+        font-size: 9px;
+    }
+    .wl-clock-face > em {
+        display: none;
+    }
+    .wl-clock-copy {
+        display: none;
+    }
+    .wl-map-wrap {
+        width: 96px;
+        gap: 4px;
+    }
+    .wl-map-panel {
+        padding: 4px;
+        border-radius: 9px;
+    }
+    .wl-map-foot {
+        padding: 3px 1px 0;
+        gap: 3px;
+    }
+    .wl-map-foot > span {
+        font-size: 7px;
+    }
+    .wl-map-foot > b {
+        font-size: 7px;
+        letter-spacing: 0;
+    }
+    .wl-exit-state {
+        display: flex;
+        justify-content: center;
+        padding: 3px 0 0;
+        gap: 0;
+    }
+    .wl-exit-state > span {
+        display: none;
+    }
+    .wl-exit-state > i {
+        width: 4px;
+        height: 4px;
+    }
+    .wl-sys {
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 104px;
+        flex-direction: column;
+        gap: 3px;
+    }
+    .wl-icon-btn {
+        padding: 4px 6px;
+        font-size: 7px;
+        border-radius: 6px;
+        letter-spacing: 0;
+    }
+    .wl-icon-btn > i {
+        width: 4px;
+        height: 4px;
+    }
+    .wl-weapon-card {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 134px;
+        bottom: 8px;
+        padding: 6px 8px 5px;
+        text-align: center;
+        border-radius: 10px;
+        pointer-events: auto;
+        cursor: pointer;
+    }
+    .wl-weapon-top {
+        display: none;
+    }
+    .wl-ammo-line {
+        justify-content: center;
+        margin: 0;
+        gap: 2px;
+    }
+    .wl-ammo-line > b {
+        font-size: 22px;
+    }
+    .wl-ammo-line > span {
+        font-size: 12px;
+    }
+    .wl-ammo-line > em {
+        font-size: 10px;
+    }
+    .wl-ammo-line > small {
+        display: none;
+    }
+    .wl-slots,
+    .wl-ammo-types {
+        display: none;
+    }
+    .wl-inv {
+        left: 8px;
+        right: auto;
+        top: 72px;
+        bottom: auto;
+        min-width: 0;
+        width: 128px;
+        padding: 5px 7px;
+        border-radius: 9px;
+        justify-content: flex-start;
+        gap: 4px 8px;
+    }
+    .wl-inv-item > em,
+    .wl-keys {
+        display: none;
+    }
+    .wl-inv-item > b {
+        font-size: 11px;
+    }
+    .wl-ico {
+        font-size: 8px;
+    }
+    .wl-prompt {
+        width: 190px;
+        bottom: 118px;
+        padding: 6px 9px 6px;
+    }
+    .wl-prompt-body > span {
+        font-size: 9px;
+    }
+    .wl-hint {
+        top: 118px;
+        font-size: 8px;
+        letter-spacing: 0.1em;
+        padding: 5px 10px;
+    }
+    .wl-toasts {
+        display: none;
+    }
+    .wl-weapon-top > span,
+    .wl-weapon-top > b {
+        display: none;
+    }
+    .wl-page .wl-tip {
+        font-size: 10px;
+        line-height: 1.8;
+        padding: 0 0.4rem;
+    }
+    .wl-stick {
+        width: 94px;
+        height: 94px;
+    }
+    .wl-stick > i {
+        width: 38px;
+        height: 38px;
+        margin: -19px 0 0 -19px;
+    }
+    .wl-stick > span {
+        top: -15px;
+        bottom: auto;
+        font-size: 7px;
+    }
+    .wl-touch-acts {
+        right: 10px;
+        bottom: 112px;
+        grid-template-columns: repeat(2, 44px);
+        gap: 4px;
+    }
+    .wl-touch-act[data-act="melee"],
+    .wl-touch-act[data-act="switch"] {
+        display: none;
+    }
+    .wl-touch-act {
+        height: 38px;
+        font-size: 8px;
+        border-radius: 9px;
+    }
+    .wl-stick-move {
+        left: 8px;
+        bottom: 12px;
+    }
+    .wl-stick-aim {
+        right: 8px;
+        bottom: 12px;
+    }
+
+    /* 竖屏覆盖层：内容收紧，尽量不用滚动就能看见开始按钮 */
+    .wl-overlay {
+        padding: 12px 12px;
+        align-items: center;
+        overflow: hidden;
+    }
+    .wl-overlay-inner {
+        max-height: none;
+        padding: 2px 0 6px;
+        overflow: visible;
+    }
+    .wl-kicker {
+        display: none;
+    }
+    .wl-title {
+        font-size: 28px;
+        letter-spacing: 0.12em;
+        text-indent: 0.12em;
+    }
+    .wl-title::after {
+        width: 34px;
+        margin: 8px auto 0;
+    }
+    .wl-sub {
+        display: block;
+        margin-top: 6px;
+        font-size: 8px;
+        letter-spacing: 0.3em;
+    }
+    .wl-desc {
+        display: none;
+    }
+    .wl-overlay.is-end .wl-desc {
+        display: block;
+        margin-top: 10px;
+        font-size: 9px;
+        line-height: 1.7;
+        max-height: none;
+        overflow: visible;
+    }
+    .wl-levels {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+        margin-top: 8px;
+    }
+    .wl-level-card {
+        padding: 5px 6px;
+        gap: 0 4px;
+        border-radius: 7px;
+    }
+    .wl-lv-no {
+        font-size: 8px;
+    }
+    .wl-level-card > strong {
+        font-size: 8px;
+        letter-spacing: 0;
+    }
+    .wl-lv-meta {
+        font-size: 6px;
+    }
+    .wl-lv-rank {
+        top: 2px;
+        right: 3px;
+        font-size: 6px;
+    }
+    .wl-overlay-actions {
+        margin-top: 10px;
+        gap: 6px;
+    }
+    .wl-btn {
+        padding: 7px 13px;
+        font-size: 10px;
+        letter-spacing: 0.06em;
+    }
+    .wl-overlay-foot {
+        display: none;
+    }
+    .wl-grade {
+        width: 64px;
+        height: 64px;
+        margin: 6px auto 0;
+    }
+    .wl-grade > b {
+        font-size: 28px;
+    }
+    .wl-grade > span {
+        font-size: 6px;
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .wl-stage {
+        cursor: default;
+    }
+    .wl-stage.is-playing {
+        cursor: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wl-clock-ring,
+    .wl-exit-state > i,
+    .wl-vital-hp .wl-vital-track.is-low > b {
+        animation: none !important;
+    }
+    .wl-overlay,
+    .wl-level-card,
+    .wl-btn,
+    .wl-hint {
+        transition-duration: 0.01ms !important;
+    }
+}
