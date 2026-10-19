@@ -2,12 +2,22 @@
 # 新增一个工具：在 source/tools/ 下建目录，然后在这里加一条记录即可，导航和聚合页都不用改
 # 字段：name 名称 / specification 功能说明 / description 简介 / image 封面 / link 站内路径 / link_text 按钮文案
 
+- class_name: 本地 AI
+  description: 算出你的机器能跑哪些开源大模型，纯前端计算不上传数据
+  equipment_list:
+    - name: 本地模型配置助手
+      specification: 显存估算 / 量化推荐 / 启动命令
+      description: 选好显卡显存和内存，列出能跑的开源大模型、推荐量化档与预估速度，并生成 llama.cpp 启动命令
+      image: /tools/local-models/cover.jpg
+      link: /tools/local-models/
+      link_text: 开始配置
+
 - class_name: 开发工具
   description: 纯浏览器运行，数据不上传，可放心使用
   equipment_list:
     - name: JSON 格式化
       specification: 格式化 / 压缩 / 校验
       description: 粘贴 JSON 即可格式化或压缩，并实时提示语法错误位置
-      image: https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=minimal%20flat%20illustration%20of%20a%20JSON%20code%20formatting%20tool%2C%20curly%20braces%20and%20colorful%20code%20lines%2C%20developer%20aesthetic%2C%20clean%20background&image_size=landscape_4_3
+      image: /tools/json-formatter/cover.jpg
       link: /tools/json-formatter/
       link_text: 打开工具

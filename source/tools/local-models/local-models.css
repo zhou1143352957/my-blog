@@ -1,0 +1,266 @@
+.lm-tool {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 2.5rem;
+}
+
+/* 输入区 */
+.lm-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1.4rem;
+    margin-bottom: 1.4rem;
+}
+
+.lm-field {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lm-field.is-off {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.lm-label {
+    font-size: 0.85rem;
+    color: var(--efu-gray);
+}
+
+.lm-select {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--efu-secondbg);
+    color: var(--efu-fontcolor);
+    font-size: 0.85rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.lm-check {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    color: var(--efu-fontcolor);
+    cursor: pointer;
+}
+
+.lm-check input {
+    accent-color: var(--efu-theme);
+}
+
+/* 推荐结果 */
+.lm-summary {
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    background: var(--efu-secondbg);
+    margin-bottom: 1rem;
+}
+
+.lm-summary-main {
+    font-size: 0.9rem;
+    color: var(--efu-fontcolor);
+}
+
+.lm-summary-main b {
+    color: var(--efu-theme);
+    font-weight: 600;
+}
+
+.lm-cmd {
+    margin: 0.8rem 0 0;
+    padding: 0.7rem 0.9rem;
+    border-radius: 8px;
+    background: var(--efu-card-bg, rgba(127, 127, 127, 0.14));
+    color: var(--efu-fontcolor);
+    font-family: "monospace", monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.lm-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0.7rem;
+}
+
+.lm-copy {
+    padding: 0.35rem 0.9rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--efu-theme);
+    color: #fff;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.lm-copy:hover {
+    opacity: 0.85;
+}
+
+.lm-tip {
+    margin: 0.6rem 0 0;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--efu-gray);
+}
+
+/* 结果列表 */
+.lm-list-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 0.4rem;
+    font-size: 0.8rem;
+    color: var(--efu-gray);
+}
+
+.lm-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    color: var(--efu-gray);
+}
+
+.lm-filter input {
+    accent-color: var(--efu-theme);
+}
+
+.lm-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.lm-list.is-only .lm-row.is-no {
+    display: none;
+}
+
+.lm-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.55rem 0.2rem;
+}
+
+.lm-row-left {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.lm-row-name {
+    font-size: 0.9rem;
+    color: var(--efu-fontcolor);
+}
+
+.lm-tag {
+    display: inline-block;
+    margin-left: 0.4rem;
+    padding: 0.05rem 0.35rem;
+    border-radius: 5px;
+    background: var(--efu-secondbg);
+    color: var(--efu-gray);
+    font-size: 0.68rem;
+    vertical-align: 1px;
+}
+
+.lm-row-note {
+    margin-top: 0.15rem;
+    font-size: 0.78rem;
+    color: var(--efu-gray);
+}
+
+.lm-row-right {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.lm-vram {
+    min-width: 8.4rem;
+    text-align: right;
+    font-size: 0.78rem;
+    color: var(--efu-gray);
+    font-variant-numeric: tabular-nums;
+}
+
+.lm-bar {
+    width: 76px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--efu-secondbg);
+    overflow: hidden;
+}
+
+.lm-bar i {
+    display: block;
+    height: 100%;
+    background: var(--efu-theme);
+}
+
+.lm-bar.is-warn i {
+    opacity: 0.5;
+}
+
+.lm-bar.is-no i {
+    background: var(--efu-gray);
+}
+
+.lm-status {
+    min-width: 6.4rem;
+    text-align: right;
+    font-size: 0.8rem;
+}
+
+.lm-status.is-ok {
+    color: var(--efu-theme);
+}
+
+.lm-status.is-warn {
+    color: var(--efu-fontcolor);
+}
+
+.lm-status.is-slow,
+.lm-status.is-no {
+    color: var(--efu-gray);
+}
+
+.lm-empty {
+    padding: 1.2rem 0;
+    font-size: 0.85rem;
+    color: var(--efu-gray);
+}
+
+@media (max-width: 768px) {
+    .lm-row {
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+
+    .lm-row-right {
+        flex: 1 1 auto;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 0.5rem 0.7rem;
+    }
+
+    .lm-vram,
+    .lm-status {
+        min-width: 0;
+    }
+
+    .lm-status {
+        flex: 0 0 100%;
+        text-align: left;
+    }
+}
