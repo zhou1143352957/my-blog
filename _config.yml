@@ -29,6 +29,9 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  # INKWAVE 是独立打包的 three.js 单页游戏，入口 index.html 必须原样输出，
+  # 不能套用站点模板，因此整目录跳过渲染
+  - 'games/inkwave/game/**'
 
 # Writing
 new_post_name: :title.md # File name of new posts

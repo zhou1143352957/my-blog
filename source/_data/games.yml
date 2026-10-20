@@ -5,6 +5,12 @@
 - class_name: 网页游戏
   description: 浏览器直接打开就能玩，不用下载安装
   equipment_list:
+    - name: 涂地大乱斗
+      specification: 3D / 4v4 / 涂地 / 射击
+      description: 四人一队的涂地对战射击。三分钟里把地面涂满自己队的颜色就算赢，按住潜墨变成鱿鱼形态，在墨水里游得更快、补满墨罐、还能顺着涂过的墙往上爬。七种武器、三张地图、昼夜两种时段，角色动作、贴图与音效全部由代码程序化生成
+      image: /games/inkwave/cover.jpg?v=2
+      link: /games/inkwave/
+      link_text: 进入对局
     - name: 废土余生
       specification: 俯视 / 双摇杆 / 搜刮 / 撤离
       description: 俯视视角的废墟生存搜刮。白天 60–75 秒在六张手工街区里翻箱倒柜，入夜断电、尸潮压上来，带着物资跑到信号烟处撤离。程序化绘制的雨雾、灯光与车壳，四把枪、翻滚与冲刺，装备与弹药跨区继承，进度和评价存在本地
