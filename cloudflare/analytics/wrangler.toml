@@ -1,0 +1,16 @@
+name = "blog-analytics"
+main = "worker.js"
+compatibility_date = "2026-10-21"
+
+# 执行 `npx wrangler d1 create blog-analytics` 后，
+# 把返回的 database_id 填到下面
+[[d1_databases]]
+binding = "DB"
+database_name = "blog-analytics"
+database_id = "REPLACE_WITH_DATABASE_ID"
+
+# 每天附加的模拟访问量区间（真实访问 + 这里的随机量合并展示）
+# 两项都设为 0 即可关闭模拟，只显示真实数据
+[vars]
+DAILY_RANDOM_MIN = "12"
+DAILY_RANDOM_MAX = "45"
